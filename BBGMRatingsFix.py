@@ -1,22 +1,7 @@
 import json
 
 '''
-Fix Ratings in a BBGM JSON according to the modifications you want:
-hgt -1
-stre -6
-spd -6
-jmp -6
-end -18
-ins -10
-dnk -7
-ft -9
-midrange -10
-threes -6
-oiq -6
-diq -2
-drb +2
-pss +3
-reb +3
+Fix Ratings in a BBGM JSON according to the modifications you want. The default modifications were specified by ClevelandFan and Jlebron13.
 '''
 
 
@@ -46,9 +31,6 @@ with open(fileName, 'r', encoding='utf-8-sig') as file:
 
 players = export['players']
 
-print(players[56]['firstName'] + " " + players[56]['lastName'])
-print(players[56]['ratings'][-1])
-
 for player in players:
 	if (player['tid'] == -3):
 		continue
@@ -69,8 +51,6 @@ for player in players:
 		player['ratings'][-1]['drb'] = max(0, drbChange + player['ratings'][-1]['drb'])
 		player['ratings'][-1]['pss'] = max(0, pssChange + player['ratings'][-1]['pss'])
 		player['ratings'][-1]['reb'] = max(0, rebChange + player['ratings'][-1]['reb'])
-
-print(players[56]['ratings'][-1])
 
 # Replace Export Data with Fixed Data
 export['players'] = players
