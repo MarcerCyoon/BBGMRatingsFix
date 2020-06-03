@@ -52,6 +52,10 @@ for player in players:
 		player['ratings'][-1]['pss'] = max(0, pssChange + player['ratings'][-1]['pss'])
 		player['ratings'][-1]['reb'] = max(0, rebChange + player['ratings'][-1]['reb'])
 
+		# Remove OVR and POT so they can be recalculated
+		player['ratings'][-1].pop("ovr")
+		player['ratings'][-1].pop("pot")
+
 # Replace Export Data with Fixed Data
 export['players'] = players
 
